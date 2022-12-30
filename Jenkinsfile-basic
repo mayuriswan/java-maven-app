@@ -17,6 +17,13 @@ pipeline {
                 }
             }
         }
+        stage('m9awd f devops ana ') {
+            steps {
+                script {
+                    echo "lm9awd loading..."
+                }
+            }
+        }
         stage('deploy') {
             steps {
                 script {
