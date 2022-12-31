@@ -1,12 +1,21 @@
-verion :'3'
-services : 
-  java-maven-project:
-     image:push mayuriswan/demo-app:java-maven-app 
-     port:
-       -8000:8000
-   postgres:
-      image: postgres:13
-      port:
-        -5432:5432
-      environment:
-        - POSTGRES_PASSWORD:my-ps
+
+version: '3'
+services:
+  # my-app:
+  # image: ${docker-registry}/my-app:1.0
+  # ports:
+  # - 3000:3000
+  mongodb:
+    image:push mayuriswan/demo-app:java-maven-app 
+    ports:
+      - 8000:8000
+    
+    
+  mongo-express:
+    image: postgres:13
+    
+    ports:5432:5432
+      - 
+    environment:
+      - POSTGRES_PASSWORD:my-ps
+    
