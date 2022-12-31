@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     echo "building image  application..."
-                    withCredentials([usernamePassworf(credentialId:'docker-hub',passwordVariable:'PASS',usernameVariable:'USER')]){
+                    withCredentials([usernamePassword(credentialId:'docker-hub',passwordVariable:'PASS',usernameVariable:'USER')]){
                         sh 'docker build -t mayuriswan/my-repo:2.0 .'
                         sh 'echo $PASS | docker login -u USER -password-stdin'
                         sh 'docker push  mayuriswan/my-repo:2.0 '
