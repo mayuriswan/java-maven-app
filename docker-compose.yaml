@@ -6,7 +6,7 @@ services:
   # ports:
   # - 3000:3000
   mongodb:
-    image:push mayuriswan/demo-app:java-maven-app 
+    image: push mayuriswan/demo-app:java-maven-app 
     ports:
       - 8000:8000
     
@@ -14,8 +14,8 @@ services:
   mongo-express:
     image: postgres:13
     
-    ports:5432:5432
-      - 
+    ports:
+      - 5432:5432
     environment:
       - POSTGRES_PASSWORD:my-ps
     
