@@ -27,7 +27,11 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    echo "Deploying the application..."
+                    sshagent(['docker-server']) {
+                        def dockerCmd = 'docker run -p 3000:3080 -d mayuriswan/demo-app:node-1.0'
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@35.180.39.170 ${dockerCmd}"
+                                }   
+         
                 }
             }
         }
