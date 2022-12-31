@@ -6,7 +6,7 @@ services:
   # ports:
   # - 3000:3000
   mongodb:
-    image: push mayuriswan/demo-app:node-1.0
+    image:  mayuriswan/demo-app:node-1.0
     ports:
       - 8000:8000
     
