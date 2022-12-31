@@ -1,0 +1,12 @@
+verion :'3'
+services : 
+  java-maven-project:
+     image:push mayuriswan/demo-app:java-maven-app 
+     port:
+       -8000:8000
+   postgres:
+      image: postgres:13
+      port:
+        -5432:5432
+      environment:
+        - POSTGRES_PASSWORD:my-ps
