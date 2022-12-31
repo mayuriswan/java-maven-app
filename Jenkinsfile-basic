@@ -23,7 +23,8 @@ pipeline {
                     echo "Deploying the application..."
                     script {
                     sshagent(['docker-server1']) {
-                        def dockerCmd = 'docker run -p 3000:3080 -d mayuriswan/demo-app:node-1.0'
+                        def dockerCmd = 'docker-compose -f docker-compose.yaml --detach'
+                        sh " scp docker-compose.yaml ec2-user@35.180.39.170:/home/ec2-user"
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@35.180.39.170 ${dockerCmd}"
                                 }   
          
