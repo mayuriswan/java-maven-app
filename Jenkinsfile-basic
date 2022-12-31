@@ -1,26 +1,31 @@
 #!/usr/bin/env groovy
 
+#!/usr/bin/env groovy
+CODE_CHANFES =getGitChanges()
 pipeline {
     agent none
+    tools{
+        maven :'maven-3.6.3'
+    }
     stages {
-        stage('build') {
+        stage('build jar') {
             steps {
                 script {
                     echo "Building the application..."
+                    sh 'mvn package'
                 }
             }
         }
-        stage('test') {
+        stage('build image ') {
+           
             steps {
                 script {
-                    echo "Testing the application..."
-                }
-            }
-        }
-        stage('m9awd f devops ana ') {
-            steps {
-                script {
-                    echo "lm9awd loading..."
+                    echo "building image  application..."
+                    withCredentials([usernamePassworf(credentialId:'docker-hub',passwordVariable:'PASS',usernameVariable:'USER')]){
+                        sh 'docker build -t mayuriswan/my-repo:2.0 .'
+                        sh 'echo $PASS | docker login -u USER -password-stdin'
+                        sh 'docker push  mayuriswan/my-repo:2.0 '
+                    }
                 }
             }
         }
@@ -32,4 +37,5 @@ pipeline {
             }
         }
     }
+ 
 }
