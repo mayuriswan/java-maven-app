@@ -4,7 +4,7 @@
 CODE_CHANFES =getGitChanges()
 pipeline {
     agent none
-    tools{
+    tools {
         maven :'maven-3.6.3'
     }
     stages {
